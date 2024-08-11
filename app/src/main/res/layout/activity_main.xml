@@ -145,11 +145,20 @@
         android:orientation="horizontal"
         android:layout_weight="1">
         <Button
+            android:id="@+id/btnDot"
+            android:layout_margin="2dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onDotClicked"
+            android:text="."
+            tools:ignore="UsingOnClickInXml" />
+        <Button
             android:id="@+id/btnZero"
             android:layout_margin="2dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:onClick="onDigit"
             android:text="0"
             tools:ignore="UsingOnClickInXml" />
@@ -159,7 +168,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="onDigit"
+            android:onClick="onClear"
             android:text="CLR"
             tools:ignore="UsingOnClickInXml" />
         <Button
@@ -184,7 +193,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="onDigit"
+            android:onClick="onEqual"
             android:text="="
             tools:ignore="UsingOnClickInXml" />
 
