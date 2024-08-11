@@ -55,9 +55,7 @@ class MainActivity : AppCompatActivity() {
                 if (expression != null) {
                     if(expression.startsWith("-")){
                         prefix = "-"
-                        if (expression != null) {
-                            expression = expression.substring(1)
-                        }
+                        expression = expression.substring(1)
                     }
                 }
 
@@ -67,7 +65,26 @@ class MainActivity : AppCompatActivity() {
                         val one = split[0]
                         val two = split[1]
                         val result = one.toDouble().minus(two.toDouble())
-                        tvInput?.text = result.toString()
+                        tvInput?.text = removeZeroAfterDot(result.toString())
+                    }else if(expression.contains("+")){
+                        val split = expression.split("+")
+                        val one = split[0]
+                        val two = split[1]
+                        val result = one.toDouble().plus(two.toDouble())
+                        tvInput?.text = removeZeroAfterDot(result.toString())
+                    }
+                    else if(expression.contains("*")){
+                        val split = expression.split("*")
+                        val one = split[0]
+                        val two = split[1]
+                        val result = one.toDouble()  * two.toDouble()
+                        tvInput?.text = removeZeroAfterDot(result.toString())
+                    }else if(expression.contains("/")){
+                        val split = expression.split("/")
+                        val one = split[0]
+                        val two = split[1]
+                        val result = one.toDouble() / two.toDouble()
+                        tvInput?.text = removeZeroAfterDot(result.toString())
                     }
                 }
 
@@ -76,6 +93,14 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error occurred: $e", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun removeZeroAfterDot(result: String): String{
+        var value = result
+        if(result.contains("0")){
+            value = result.substring(0, result.length - 2)
+        }
+        return  value
     }
 
     fun onOperator(view: View) {
